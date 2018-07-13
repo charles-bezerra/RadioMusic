@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Redirect;
 use App\Usuario;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -34,10 +35,11 @@ class Cadastro extends Controller
               if(!empty(Session::get('error'))){
                   Session::forget('error');
               }
-              Session::put('nome', $login[0]->nome);
+              $query = DB::table('usuarios')->select('id')->where('matricula',$request->matricula)->get();
+              Session::put('nome', $request->nome . " " . $request->snome);
               Session::put('login', "OK");
-              Session::put('email', $login[0]->email);
-              Session::put('id', $login[0]->id);
+              Session::put('email', $request->email);
+              Session::put('id', $query[0]->id);
               return Redirect::to('home');
           }
        }else{
