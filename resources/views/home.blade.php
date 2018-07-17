@@ -2,9 +2,10 @@
 
 <html>
   @include('head')
-  @if(!empty(Session::get('login')) && Session::get('login') != 'OK')
+  @if(Session::get('login') != 'OK')
     <script type="text/javascript">
-        window.location = "{{ route('/') }}";//here double curly bracket
+        {{ Session::put('error', "Você precisa se cadastrar primeiro!") }}
+        window.location = "{{ route('cadastro') }}";//here double curly bracket
     </script>
   @endif
   <body>
@@ -43,6 +44,7 @@
                 </div>
                 <div class="modal-body">
                   <form method="post" action="{{ route('criar-pedido') }}">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">

@@ -36,6 +36,9 @@
       </div>
     </nav>
 
+
+		<img class="img-fluid" src="{{ asset('img/background.jpg') }}" height="100px" width="100px">
+
     <!-- Page Content -->
     <section>
       <div class="container">

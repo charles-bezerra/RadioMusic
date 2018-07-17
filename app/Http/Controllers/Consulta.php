@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Redirect;
 use App\Pedido;
+use Session;
 class Consulta extends Controller
 {
     public function pedir(Request $request){
@@ -14,6 +15,6 @@ class Consulta extends Controller
         $pedido->cantor = $request->cantor;
         $pedido->usuario_id = intval(Session::get('id'));
         $pedido->save();
-        return Redirect::to('home');
+        return Redirect::to('/');
     }
 }
