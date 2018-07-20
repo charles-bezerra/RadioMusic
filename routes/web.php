@@ -12,17 +12,15 @@
 */
 
 Route::get('/', function () {
-  return view('index');
+  return view('layouts/index');
 })->name('index');
 
-Route::get('login', function () {
-	return view('login');
-})->name('login');
 
 Route::get('home', function (){
-  return view('home');
+  return view('layouts/home');
 })->name('home');
 
+Route::get('login', 'Login@login')->name('login');
 Route::get('cadastro','Cadastro@cadastrar')->name('cadastro');
 Route::post('registrar','Cadastro@registrar')->name('registrar');
 Route::get('validar', 'Login@validar')->name('validar');

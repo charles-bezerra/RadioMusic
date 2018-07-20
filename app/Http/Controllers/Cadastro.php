@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class Cadastro extends Controller
 {
     public function cadastrar(){
-        return view('cadastro');
+        return view('layouts.cadastro');
     }
 
     public function registrar(Request $request){

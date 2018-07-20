@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-  @include('head')
+  @include('includes.head')
   @if(Session::get('login') != 'OK')
     <script type="text/javascript">
         {{ Session::put('error', "Você precisa se cadastrar primeiro!") }}
@@ -9,9 +9,7 @@
     </script>
   @endif
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black">
-        <a class="navbar-brand" href="{{ route('index') }}"><b>RadioMusic</b></a>
-    </nav>
+      @include('includes.header')
       <div class="container">
           @if(!empty(Session::get('nome')))<h3 align='center' style="padding-top: 30px">Olá {{ Session::get('nome') }}@endif</h3>
           <div class="row">

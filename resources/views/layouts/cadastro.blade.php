@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-  @include('head')
-  @include('header')
+  @include('includes.head')
+  @include('includes.header')
   <style>
     body{
       background-color: #F8F8FF;

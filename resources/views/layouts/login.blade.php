@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@extends('head')
+@include('includes.head')
 <style>
 		.caixa-de-entrada{
 			margin-left: 27.5%;
@@ -14,7 +14,7 @@
 		}
 </style>
 <body>
-	@include('header')
+	@include('includes.header')
 	<div class='container'>
 
 			<form method="get" action="{{ route('validar') }}">

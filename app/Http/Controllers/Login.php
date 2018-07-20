@@ -30,4 +30,7 @@ class Login extends Controller
         Session::forget('error');
         return Redirect::to('/');
     }
+    public function login(){
+        return view('layouts/login');
+    }
 }
