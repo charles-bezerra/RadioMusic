@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom" style="background-color:black">
   <div class="container">
-    <a class="navbar-brand" href="{{ route('index') }}">
+    <a class="navbar-brand" href="{{ route('usuario.index') }}">
         <img class="img-fluid" width="25px" src='/icons/icon_player.png'/>
         <b>RadioMusic</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
           <a class="nav-link" href="{{ route('login') }}">Entrar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('cadastro') }}">Cadastrar-se</a>
+          <a class="nav-link" href="{{ route('usuario.create') }}">Cadastrar-se</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sobre</a>

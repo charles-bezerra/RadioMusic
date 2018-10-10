@@ -21,9 +21,18 @@
   <body>
       <div class="container">
           <div class="caixa-entrada">
-          <form action="{{ route('registrar') }}"  method="POST">
+          <form action="{{ route('usuario.store') }}"  method="POST">
               {{ csrf_field() }}
-              <h3>Faça seu cadastro</h3>
+              
+              <h2 style="margin-bottom:20px">Faça seu cadastro</h2>
+
+              @if(!empty(Session::get('error')))
+                @section('error-senha')
+                  <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                  </div>
+                @show
+              @endif
               <div class="row">
                   <div class="col-3">
                       <div class="form-group">
@@ -90,11 +99,6 @@
                       <label for="Matricula">Matricula</label>
                       <input type="text" required='required' class="form-control" id="Matricula" placeholder="Sua matricula" name='matricula'>
                     </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-12">
-                      <p align='center' style="color:red">@if(!empty(Session::get('error'))){{ Session::get('error') }} @endif</p>
                   </div>
               </div>
               <div class="row">

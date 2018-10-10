@@ -10,19 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get("/", "UsuarioController@index");
 
-Route::get('/', function () {
-  return view('layouts/index');
-})->name('index');
+Route::resource("usuario", "UsuarioController");
+Route::resource("servidor", "ServidorController");
 
+Route::get("login", "UsuarioController@login")->name('login');
+Route::get("home", "UsuarioController@home")->name('home');
+Route::get("valid", "UsuarioController@valid")->name('valid');
+Route::get("pedido", "UsuarioController@pedir_musica")->name('pedir_musica');
+Route::get("exit", "UsuarioController@exit")->name('exit');
 
-Route::get('home', function (){
-  return view('layouts/home');
-})->name('home');
-
-Route::get('login', 'Login@login')->name('login');
-Route::get('cadastro','Cadastro@cadastrar')->name('cadastro');
-Route::post('registrar','Cadastro@registrar')->name('registrar');
-Route::get('validar', 'Login@validar')->name('validar');
-Route::get('sair', 'Login@sair')->name('sair');
-Route::post('criar-pedido', 'Consulta@pedir')->name('criar-pedido');
+Route::view('table', 'includes.table_pedidos_user')->name('table1');

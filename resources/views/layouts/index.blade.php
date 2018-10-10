@@ -30,7 +30,7 @@
 										<div class="row">
 												<div class="col-12">
 														<a href="{{ route('login') }}" class="btn btn-success">Entrar</a>
-														<a href="{{ route('cadastro') }}" class="btn btn-secondary">Cadastrar</a>
+														<a href="{{ route('usuario.create') }}" class="btn btn-secondary">Cadastrar</a>
 												</div>
 										</div>
 				    			</section>
