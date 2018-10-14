@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Redirect;
-use App\Pedido;
-use App\Usuario;
+use App\Pedidos;
+use App\Usuarios;
+use App\Musicas;
 use Session;
 
 class UsuarioController extends Controller
-{
+{     
     /**
      * Display a listing of the resource.
      *
@@ -56,11 +57,11 @@ class UsuarioController extends Controller
               $user = DB::table('usuarios')->select('*')->where('matricula',$request->matricula)->get();
 
               if(count($user)>0){
-                Session::put('error', "Usuario ja existente");
-                return Redirect::to(route('usuario.create'));
+                  Session::put('error', "Usuario ja existente");
+                  return Redirect::to(route('usuario.create'));
               }
               else{
-                  $novo = new Usuario();
+                  $novo = new Usuarios();
                   $novo->nome = $request->nome . " " . $request->snome;
                   $novo->senha = $request->senha;
                   $novo->email = $request->email;
@@ -127,17 +128,21 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('usuarios')->drop()->where('id',"=",$id);
+        $this->exit();
+        return Redirect::to(route('/'));
     }
     
 
     public function pedir_musica(Request $request)
     {
-        $pedido = new Pedido();
-        $pedido->nome = $request->musica;
-        $pedido->cantor = $request->cantor;
+        $pedido = new Pedidos();
+
+        $pedido->detalhes = $request->detalhes;
+        $pedido->musica_id = intval($request->musica_id);
         $pedido->usuario_id = intval(Session::get('id'));
         $pedido->save();
+        
         return Redirect::to(route('home'));
     }
     

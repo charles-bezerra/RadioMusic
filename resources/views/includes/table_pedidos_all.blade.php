@@ -1,5 +1,5 @@
 @include('includes.head')
-<table class="table" id="shadow-1">
+<table class="table shadow-1"  style="border-radius-bottom: 20px">
   <thead class="thead-dark">
     <tr>
       <th></th>
@@ -25,6 +25,34 @@
         <td>@fat</td>
       </tr>
       <tr>
+        <th>icon</th>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    <tr>
+        <th>icon</th>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+          <tr>
+        <th>icon</th>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+          <tr>
+        <th>icon</th>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+    </tr>
+          <tr>
         <th>icon</th>
         <th scope="row">3</th>
         <td>Larry</td>

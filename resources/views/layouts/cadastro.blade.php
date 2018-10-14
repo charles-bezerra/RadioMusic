@@ -65,7 +65,7 @@
                   <div class="col-6">
                       <div class="form-group">
                         <label for="Confirmar-senha">Confirmar senha</label>
-                        <input type="password" required='required' class="form-control" id="Email" placeholder="Confirme a senha" name='csenha'>
+                        <input type="password" required='required' class="form-control" id="Email" placeholder="Confirme a senha que você digitou" name='csenha'>
                       </div>
                   </div>
               </div>
@@ -92,9 +92,10 @@
                         <option>São Paulo do Potengi</option>
                         <option>Zona Norte</option>
                       </select>
+                      <small class="form-text text-muted">Selecione o campus em qual você está cursando</small>
                     </div>
                   </div>
-                  <div class="col-3">
+                  <div class="col-3"> 
                     <div class="form-group">
                       <label for="Matricula">Matricula</label>
                       <input type="text" required='required' class="form-control" id="Matricula" placeholder="Sua matricula" name='matricula'>

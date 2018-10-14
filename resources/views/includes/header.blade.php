@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark fixed-top" style="background-color:black">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black">
   <a class="navbar-brand" href="{{ route('usuario.index') }}">
     <img class="img-fluid" width="25px" src='/icons/icon_player.png'/>
     <b>RadioMusic</b>

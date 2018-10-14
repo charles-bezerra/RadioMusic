@@ -15,10 +15,10 @@ Route::get("/", "UsuarioController@index");
 Route::resource("usuario", "UsuarioController");
 Route::resource("servidor", "ServidorController");
 
-Route::get("login", "UsuarioController@login")->name('login');
-Route::get("home", "UsuarioController@home")->name('home');
-Route::get("valid", "UsuarioController@valid")->name('valid');
-Route::get("pedido", "UsuarioController@pedir_musica")->name('pedir_musica');
-Route::get("exit", "UsuarioController@exit")->name('exit');
-
+Route::get("Entrar", "UsuarioController@login")->name('login');
+Route::get("Home", "UsuarioController@home")->name('home');
+Route::get("Validando", "UsuarioController@valid")->name('valid');
+Route::get("Pedido", "UsuarioController@pedir_musica")->name('pedir_musica');
+Route::get("Sair", "UsuarioController@exit")->name('exit');
+Route::get("Cadastramento", function(){return view('layouts.cadastroMusica');})->name('cadastroMusica');
 Route::view('table', 'includes.table_pedidos_user')->name('table1');

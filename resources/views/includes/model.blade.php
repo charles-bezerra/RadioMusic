@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                               <label for="text">Nome da musica</label>
-                              <input type="text" required='required' class="form-control" id="musica" placeholder="Nome da musica desejada" name="musica">
+                              <input type="text" required='required' class="form-control" id="musica_input" placeholder="Nome da musica desejada" name="musica">
                             </div>
                         </div>
                     </div>
@@ -24,12 +24,18 @@
                         <div class="col-12">
                             <div class="form-group">
                               <label for="text">Nome cantor</label>
-                              <input type="text" required='required' class="form-control" id="cantor" placeholder="Cantor correspondente" name="cantor">
+                              <input type="text" required='required' class="form-control" id="cantor_input" placeholder="Cantor correspondente" name="cantor">
                             </div>
                         </div>
                     </div>
-
-
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for='text'>Mensagem</label>
+                                <textarea type="text" class="form-control" id='detalhes_input' placeholder='Aqui você podem dizer a quem dedica essa música' name="detalhes"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
