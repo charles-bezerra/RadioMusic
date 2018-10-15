@@ -21,7 +21,6 @@ class UsuarioController extends Controller
     {
         return view("layouts.index");
     }
-    
     public function login()
     {
         return view('layouts.login');
@@ -41,7 +40,15 @@ class UsuarioController extends Controller
 
     public function home()
     {
-        return view("layouts.home");
+        $users = [];
+        $musicas = [];
+        $count = Pedidos::count("*");
+
+        for($i = 1; $i <= $count; $i++){
+            array_push($users, Pedidos::find($i)->usuarios);
+            array_push($musicas, Pedidos::find($i)->musicas);          
+        }
+        return view("layouts.home", ['users' => $users, 'musicas' => $musicas, 'count' => $count]);
     }
 
 

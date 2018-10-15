@@ -18,13 +18,3 @@
 	  </form>
   </div>
 </nav>
-<script type="text/javascript">
-	$(document).ready(function () {
-
-		var tag = document.getElementById('user_nome');
-		var valor = tag.innerHTML;
-		var result = valor.split(" ");
-		tag.innerHTML = result[0];
-
-	});
-</script>

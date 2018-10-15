@@ -8,10 +8,11 @@
         window.location = "{{ route('login') }}";//here double curly bracket
     </script>
   @endif
+
   <body>
       @include('includes.header-home')
       <div class="container">
-          <div style="margin-top: 40px"></div>
+          <div style="margin-top: 50px"></div>
           <div class="row">
                 <div  align='right' class="col-12">
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
