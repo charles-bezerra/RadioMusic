@@ -13,9 +13,10 @@
 			padding-bottom: 20px;
 		}
 </style>
+
+<div class='recuo'></div>
 <body>
 	@include('includes.header')
-
 	<div class='container'>
 
 			<form method="get" action="{{ route('valid') }}">

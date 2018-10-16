@@ -4,9 +4,6 @@
   @include('includes.head')
   @include('includes.header')
   <style>
-    body{
-      background-color: #F8F8FF;
-    }
     .caixa-entrada{
       width: 100%;
       margin-left: 0%;
@@ -18,6 +15,8 @@
        padding-top: 5%;
     }
   </style>
+
+  <div class='recuo'></div>
   <body>
       <div class="container">
           <div class="caixa-entrada">

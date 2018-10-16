@@ -8,8 +8,10 @@ $factory->define(Musicas::class, function (Faker $faker) {
     return [
         'nome' => $faker->realText(18),
         'cantor' => $faker->name,
-        'albun' => $faker->realText(19),
-        'audio' => '',
+        'album' => $faker->realText(19),
+        'banda' => $faker->realText(10),
+        'id_arquivo_musica' => 'C:\Users\charl\Dropbox\Projetos\RadioMusic\public\audios/Musica-1539659580.mp3',
+        'id_arquivo_img' => 'C:\Users\charl\Dropbox\Projetos\RadioMusic\public\albuns/Album-1539659580.jpg',
         'created_at' => $tempo,
         'updated_at' => $tempo
     ];

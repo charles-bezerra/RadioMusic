@@ -5,12 +5,17 @@
 	
 	@if(!empty(Session::get('error'))){{ Session::put('error', '') }} @endif
 	
+	@if( !empty(Session::get('alert')) && Session::get('alert') == 'OK' )
+		{!! Session::put('alert', '') !!}
+	@endif
+	
 	@if(!empty(Session::get('login')) && Session::get('login') == 'OK')
 		<script type="text/javascript">
 				window.location = "{{ route('home') }}";//here double curly bracket
 		</script>
 	@endif
-  
+
+  <div class='recuo'></div>
   <body class='background-index'>
 
 		@include('includes.header-index')
@@ -68,15 +73,15 @@
 								<div class="card shadow-1"  style="width: 100%;">
 										<img class="card-img-top" src="/img/music-img.jpg" alt="Card image cap">
 										<div class="card-body">
-												<h5 class="card-title">Card title</h5>
-												<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+												<h5 class="card-title">{{ $musica->nome }} - {{ $musica->cantor }}</h5>
+												<p>{{ $pedido->detalhes }}</p>
 										</div>
 										<ul class="list-group list-group-flush">
-												<li class="list-group-item">Cras justo odio</li>
-												<li class="list-group-item">Dapibus ac facilisis in</li>
+												<li class="list-group-item"><b>Álbum: </b>{{ $musica->album }}</li>
+												<li class="list-group-item"><b>Pedido por: </b>{{ $usuario->nome }}</li>
 										</ul>
 										<div class="card-body" align='center'>
-												<a href="#" class="card-link btn btn-success" style="padding-left:15px; padding-right:20px">
+												<a href="#" class="card-link btn btn-success" onclick="player( '{{ $musica->id_arquivo_musica }}' )" style="padding-left:15px; padding-right:20px">
 														<img width="22px" src='/icons/icon_play.png'/><b>Play</b>
 												</a>
 										</div>
@@ -85,6 +90,7 @@
 						</div>
 
 				</div>
+				@include('includes.player')
 
 		</div>
 

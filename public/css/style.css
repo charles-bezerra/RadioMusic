@@ -1,6 +1,5 @@
-body
-{
-	padding-top: 25px;
+.recuo{
+	padding-top: 23px;
 }
 .background-index
 {
@@ -8,6 +7,9 @@ body
     background-repeat: no-repeat;
     background-image: url('/img/music-img.png');
     background-size: 100% 140%;
+}
+.background-newMusic
+{
 }
 .texto-largo
 {

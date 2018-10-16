@@ -17,8 +17,10 @@ class CreateMusicasTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('cantor');
-            $table->string('albun');
-            $table->binary('audio');
+            $table->string('album');
+            $table->string('banda');
+            $table->string('id_arquivo_musica');
+            $table->string('id_arquivo_img');
             $table->timestamps();
         }); 
     }

@@ -1,4 +1,3 @@
-@include('includes.head')
 <table class="table shadow-1"  style="border-radius-bottom: 30px">
 
     <thead class="thead-dark">
@@ -13,12 +12,12 @@
     </thead>
 
     <tbody style="background-color: #F8F8FF">
-        @for($i = 0; $i < $count; $i++)
+        @for($i = 0; $i < $count_pedidos; $i++)
             <tr>
-                 <th>{{ $musicas[$i]->id }}</th>
-                 <th>{{ $musicas[$i]->nome }}</th>
-                 <th>{{ $musicas[$i]->cantor }}</th>
-                 <th>{{ $users[$i]->nome }}</th>
+                 <th>{{ $musicas_pedidos[$i]->id }}</th>
+                 <th>{{ $musicas_pedidos[$i]->nome }}</th>
+                 <th>{{ $musicas_pedidos[$i]->cantor }}</th>
+                 <th>{{ $users_pedidos[$i]->nome }}</th>
                  <th></th>
                  <th></th>
             </tr>

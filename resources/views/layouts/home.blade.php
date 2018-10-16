@@ -8,7 +8,8 @@
         window.location = "{{ route('login') }}";//here double curly bracket
     </script>
   @endif
-
+  
+  <div class='recuo'></div>
   <body>
       @include('includes.header-home')
       <div class="container">
