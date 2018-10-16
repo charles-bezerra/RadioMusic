@@ -54,13 +54,14 @@ class UsuarioController extends Controller
         $count_pedidos = Pedidos::count("*");
 
         $musicas = Musicas::all(); 
+        $pedidos = Pedidos::all();
 
         for($i = 1; $i <= $count_pedidos; $i++){
             array_push($users_pedidos, Pedidos::find($i)->usuarios);
             array_push($musicas_pedidos, Pedidos::find($i)->musicas);          
         }
 
-        return view("layouts.home", ['users_pedidos' => $users_pedidos, 'musicas_pedidos' => $musicas_pedidos, 'count_pedidos' => $count_pedidos, 'musicas' => $musicas]);
+        return view("layouts.home", ['users_pedidos' => $users_pedidos, 'musicas_pedidos' => $musicas_pedidos, 'count_pedidos' => $count_pedidos, 'musicas' => $musicas, 'pedidos' => $pedidos]);
     }
 
 

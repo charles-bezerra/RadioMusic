@@ -2,24 +2,24 @@
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Ordem</th>
-            <th scope="col">Música</th>
-            <th scope="col">Cantor</th>
-            <th scope="col">Pedido</th>
-            <th scope="col">Pedido</th>
-            <th scope="col">Pedido</th>
+            <th scope="col"></th>
+            <th scope="col">Faixa</th>
+            <th scope="col">Usuário</th>
+            <th scope="col">Detalhes</th>
+            <th scope="col"></th>
         </tr>
     </thead>
 
     <tbody style="background-color: #F8F8FF">
         @for($i = 0; $i < $count_pedidos; $i++)
             <tr>
-                 <th>{{ $musicas_pedidos[$i]->id }}</th>
-                 <th>{{ $musicas_pedidos[$i]->nome }}</th>
-                 <th>{{ $musicas_pedidos[$i]->cantor }}</th>
+                 <th>
+                    <a href="#" class="btn btn-success"><img width="22px" src='/icons/icon_play.png'/></a>
+                 </th>
+                 <th>{{ $musicas_pedidos[$i]->nome }} - {{ $musicas_pedidos[$i]->cantor }}</th>
                  <th>{{ $users_pedidos[$i]->nome }}</th>
-                 <th></th>
-                 <th></th>
+                 <th>{{ $pedidos[$i]->detalhes }}</th>
+                 <th><a href="#" class="btn btn-primary">Curtir</a></th>
             </tr>
         @endfor
     </tbody>
