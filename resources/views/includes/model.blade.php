@@ -10,14 +10,13 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form method="get" action="{{ route('pedir_musica') }}">
+                  <form method="get" action="{{ route('pedido.store') }}">
                     {{ csrf_field() }}
                       <div class="row">
                           <div class="col-12">
                               <div class="form-group">
                                 <label for="text">Encontre sua música aqui</label>
-<!--                                 <input type="text" class="form-control" id="musica_input" placeholder="Nome da musica desejada" onkeyup="buscarMusicas(this.value)" name="musica">
- -->                            <select class="form-control" required="required">
+                                    <select class="form-control" required="required">
                                     @foreach($musicas as $musica)
                                       <option id='{{ $musica->id }}'>
                                            {{ $musica->nome }} - {{ $musica->cantor }} ({{ $musica->banda }})

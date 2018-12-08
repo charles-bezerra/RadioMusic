@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use App\Pedidos;
-use App\Usuarios;
+use App\User;
 use App\Musicas;
 
 $factory->define(Pedidos::class, function (Faker $faker) {
@@ -13,7 +13,7 @@ $factory->define(Pedidos::class, function (Faker $faker) {
         	return rand(1, $count);
         },
         'usuario_id' => function(){
-        	$count = Usuarios::get()->count();
+        	$count = User::get()->count();
         	return rand(1,$count);	
         },
         'detalhes' => $faker->sentence(10,30),

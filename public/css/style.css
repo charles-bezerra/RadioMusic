@@ -6,7 +6,7 @@
     background-color: #F8F8FF;
     background-repeat: no-repeat;
     background-image: url('/img/music-img.png');
-    background-size: 100% 140%;
+    background-size: 100% 100%;
 }
 .background-newMusic
 {
@@ -19,3 +19,9 @@
 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+@media (min-height: 800px) and (max-height: 1200px){
+	.background-index{
+		min-height: 1000px; 
+	}
+}
+	

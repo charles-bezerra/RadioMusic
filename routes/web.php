@@ -11,19 +11,13 @@
 |
 */
 
-Route::get("/", "UsuarioController@index");
-
-Route::resource("usuario", "UsuarioController");
-
-
-Route::get("Entrar", "UsuarioController@login")->name('login');
-Route::get("Home", "UsuarioController@home")->name('home');
-Route::get("Validando", "UsuarioController@valid")->name('valid');
-Route::get("Pedido", "UsuarioController@pedir_musica")->name('pedir_musica');
-Route::get("Sair", "UsuarioController@exit")->name('exit');
-Route::post("Gravador", "UsuarioController@move_musica")->name('move_musica');
-
-
-Route::get("Cadastramento", function(){ return view('layouts.cadastroMusica'); })->name('cadastroMusica');
+Route::get("/", "UserController@index");
+Route::resource("usuario", "UserController");
+Route::resource("pedido", "PedidoController");
+Route::resource("musica", "MusicaController");
+Route::resource("logout", "LogoutController");
 
 Route::view('table', 'includes.table_pedidos_user')->name('table1');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,5 +1,5 @@
 function cortarTexto(){
-	var tag = document.getElementById('user_nome');
+	var tag = document.getElementById('user_name');
 	var valor = tag.innerHTML;
 	var result = valor.split(" ");
 	tag.innerHTML = result[0];

@@ -10,7 +10,7 @@ use App\Musicas;
 class Pedidos extends Model
 {
     public function usuarios(){
-    	return $this->belongsTo(Usuarios::class, 'usuario_id');
+    	return $this->belongsTo(User::class, 'usuario_id');
     }
     public function musicas(){
     	return $this->belongsTo(Musicas::class, 'musica_id');

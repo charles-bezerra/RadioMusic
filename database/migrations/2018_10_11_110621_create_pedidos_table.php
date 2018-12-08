@@ -18,7 +18,7 @@ class CreatePedidosTable extends Migration
             $table->unsignedInteger('musica_id');
             $table->unsignedInteger('usuario_id');
             $table->string('detalhes');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('musica_id')->references('id')->on('musicas');
             $table->timestamps();
         });
