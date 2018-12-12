@@ -1,5 +1,21 @@
 @section('user_name')
-	<a id='user_name'>{{ Session::get('nome') }}</a>
+	 <li class="nav-item dropdown">
+        	<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        		@if(isset(Auth::user()->name))
+                	{{ Auth::user()->name }} <span class="caret"></span>
+             	@endif
+             </a>
+
+             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    Sair
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+    </li>
 @endsection
 
 @section('form-header')
@@ -8,10 +24,6 @@
 			<a class="nav-link" href="">Ajuda</a>
 		</li>
 	</ul>
-	<form class="form-inline my-2 my-lg-0" style="color: white">
-		@yield('user_name')
-		<a class="nav-link" href="{{ route('logout.index') }}" style="color:#FF6347">Sair</a>
-	</form>
 @endsection
 
 @section('links-form')
@@ -27,7 +39,7 @@
 
 @section('header')
  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black">
-	  	  <a class="navbar-brand" href="{{ route('usuario.index') }}">
+	  	  <a class="navbar-brand" href="#">
 	    		<img class="img-fluid" width="25px" src='/icons/icon_player.png'/>
 	    		<b>RadioMusic</b>
 	  	  </a>	  

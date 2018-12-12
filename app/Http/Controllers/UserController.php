@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\Input;
 
 use DB;
 use Redirect;
-use App\Pedidos;
+use App\Pedido;
 use App\User;
-use App\Musicas;
+use App\Musica;
 use Session;
 
-
 class UserController extends Controller
-{   
+{
     private $user;  
     /**
      * Display a listing of the resource.
@@ -23,13 +22,14 @@ class UserController extends Controller
      */
     public function __construct(User $user){
         $this->user = $user;
+        $this->middleware('auth');
     }
     public function index()
     {
-        $count = Pedidos::count("*");
-        $pedido = Pedidos::find($count);
-        $musica = Pedidos::find($count)->musicas;
-        $usuario = Pedidos::find($count)->usuarios;
+        $count = Pedido::count("*");
+        $pedido = Pedido::find($count);
+        $musica = Pedido::find($count)->musicas;
+        $usuario = Pedido::find($count)->usuarios;
         return view("user.index", [ 'pedido' => $pedido ,'musica' => $musica, 'usuario' => $usuario]);
     }
     public function login()
@@ -53,14 +53,14 @@ class UserController extends Controller
     {
         $users_pedidos = [];
         $musicas_pedidos = [];
-        $count_pedidos = Pedidos::count("*");
+        $count_pedidos = Pedido::count("*");
 
-        $musicas = Musicas::all(); 
-        $pedidos = Pedidos::all();
+        $musicas = Musica::all(); 
+        $pedidos = Pedido::all();
 
         for($i = 1; $i <= $count_pedidos; $i++){
-            array_push($users_pedidos, Pedidos::find($i)->usuarios);
-            array_push($musicas_pedidos, Pedidos::find($i)->musicas);          
+            array_push($users_pedidos, Pedido::find($i)->usuarios);
+            array_push($musicas_pedidos, Pedido::find($i)->musicas);          
         }
 
         return view("home", 
@@ -89,8 +89,8 @@ class UserController extends Controller
               }
               else{
                   $novo = new User();
-                  $novo->nome = $request->nome . " " . $request->snome;
-                  $novo->senha = $request->senha;
+                  $novo->name = $request->name . " " . $request->sname;
+                  $novo->password = $request->password;
                   $novo->email = $request->email;
                   $novo->matricula = $request->matricula;
                   $novo->campus = $request->campus;
@@ -101,11 +101,11 @@ class UserController extends Controller
                       Session::forget('error');
                   }
                   $query = DB::table('users')->select('id')->where('matricula',$request->matricula)->get();
-                  Session::put('nome', $request->nome . " " . $request->snome);
+                  Session::put('name', $request->name . " " . $request->sname);
                   Session::put('login', "OK");
                   Session::put('email', $request->email);
                   Session::put('id', $query[0]->id);
-                  return Redirect::to(url('home'));
+                  return Redirect::to(route('home'));
               }
            }else{
              Session::put('error', "Senhas não conferem");
@@ -162,19 +162,19 @@ class UserController extends Controller
     
     
 
-    public function valid(Request $request){
-          $login = DB::table('users')->select('*')->where('email',"=",$request->email)->where('senha',"=",$request->senha)->get();
-          if (count($login)>0) {
-              Session::put('id', $login[0]->id);
-              Session::put('nome', $login[0]->nome);
-              Session::put('login', "OK");
-              Session::put('email', $login[0]->email);
-              Session::forget('error');
-              return Redirect::to( route('home') );
-          }else{
-              Session::put('error', "Email ou senha não encontrado");
-              return Redirect::to( route('login') );
-          }
-    }
+    // public function valid(Request $request){
+    //       $login = DB::table('users')->select('*')->where('email',"=",$request->email)->where('senha',"=",$request->senha)->get();
+    //       if (count($login)>0) {
+    //           Session::put('id', $login[0]->id);
+    //           Session::put('nome', $login[0]->nome);
+    //           Session::put('login', "OK");
+    //           Session::put('email', $login[0]->email);
+    //           Session::forget('error');
+    //           return Redirect::to( route('home') );
+    //       }else{
+    //           Session::put('error', "Email ou senha não encontrado");
+    //           return Redirect::to( route('login') );
+    //       }
+    // }
 
 }

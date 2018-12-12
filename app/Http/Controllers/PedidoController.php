@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pedidos;
-use Session;
+use App\Pedido;
 use Redirect;
+use Session;
+
 
 class PedidoController extends Controller
 {

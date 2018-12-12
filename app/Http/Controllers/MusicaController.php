@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Input;
+
 
 use Illuminate\Http\Request;
 use App\Musicas;
 use Session;
-use Redirect;
-
 
 class MusicaController extends Controller
 {
@@ -27,7 +27,7 @@ class MusicaController extends Controller
      */
     public function create()
     {
-        return view('layouts.cadastroMusica');
+        return view('user.cadastroMusica');
     }
 
     /**
@@ -67,7 +67,7 @@ class MusicaController extends Controller
           $musica->save();
 
           Session::put('alert', 'OK');
-          return Redirect::to( route('cadastroMusica') );
+          return Redirect::to( route('musica.create') );
     }    
 
     /**

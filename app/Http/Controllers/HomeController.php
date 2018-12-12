@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Redirect;
 
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -18,21 +16,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    // public function login(Request $request){
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'senha' => 'required'
-    //     ]);
-    //     $credentials = ['email'=>$request->email, 'senha'=>$request->senha];
-    //     if(Auth::attempt($credentials)){
-    //         return redirect()->route('home');
-    //     }
-    //     else{
-    //         return redirect()->back()->with('errors', 'Acesso negado para essas credencias');
-    //     }
-
-    // }
-
     /**
      * Show the application dashboard.
      *
@@ -40,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('user.home');
     }
 }

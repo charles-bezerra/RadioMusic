@@ -10,18 +10,20 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form method="get" action="{{ route('pedido.store') }}">
+                  <form method="get" action="#">
                     {{ csrf_field() }}
                       <div class="row">
                           <div class="col-12">
                               <div class="form-group">
                                 <label for="text">Encontre sua música aqui</label>
                                     <select class="form-control" required="required">
-                                    @foreach($musicas as $musica)
-                                      <option id='{{ $musica->id }}'>
-                                           {{ $musica->nome }} - {{ $musica->cantor }} ({{ $musica->banda }})
-                                      </option>
-                                    @endforeach      
+                                    @if(isset($musicas))
+                                        @foreach($musicas as $musica)
+                                          <option id='{{ $musica->id }}'>
+                                               {{ $musica->nome }} - {{ $musica->cantor }} ({{ $musica->banda }})
+                                          </option>
+                                        @endforeach
+                                    @endif      
                                 </select>
                               </div>
                           </div>

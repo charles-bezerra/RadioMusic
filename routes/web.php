@@ -11,13 +11,13 @@
 |
 */
 
-Route::get("/", "UserController@index");
+Route::get('/', function () {
+    return view('index');
+});
 Route::resource("usuario", "UserController");
 Route::resource("pedido", "PedidoController");
 Route::resource("musica", "MusicaController");
-Route::resource("logout", "LogoutController");
 
-Route::view('table', 'includes.table_pedidos_user')->name('table1');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::view('table', 'includes.table_pedidos_user')->name('table1');
