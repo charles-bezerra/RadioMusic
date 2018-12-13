@@ -18,20 +18,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    // public function login(Request $request){
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'senha' => 'required'
-    //     ]);
-    //     $credentials = ['email'=>$request->email, 'senha'=>$request->senha];
-    //     if(Auth::attempt($credentials)){
-    //         return redirect()->route('home');
-    //     }
-    //     else{
-    //         return redirect()->back()->with('errors', 'Acesso negado para essas credencias');
-    //     }
-
-    // }
 
     /**
      * Show the application dashboard.

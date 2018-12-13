@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model{
+class User extends Authenticatable
+{
+    use Notifiable;
 
 	public $fillable = [
 		'nome','snome', 'senha', 'email', 'matricula', 'campus'
@@ -19,6 +22,10 @@ class User extends Model{
 		'matricula' => 'required',
 		'campus' => 'required'
 	];
+
+	protected $hidden = [
+        'senha', 'remember_token',
+    ];
 
     public function pedidos(){
         return $this->hasMany(Pedidos::class, 'usuario_id');

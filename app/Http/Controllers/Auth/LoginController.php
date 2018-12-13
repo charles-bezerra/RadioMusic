@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Redirect;
+
+
 
 class LoginController extends Controller
 {
@@ -35,5 +40,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    public function login(Request $request){
+
+        $credentials = ['email'=>$request->email, 'password'=>$request->senha];
+        
+        if(Auth::attempt($credentials)){
+            $user = User::get()->where('email',$credentials['email'])->firsh();
+            
+            // if (isset($user)) {
+            //     if ($user->tipo == "user") {
+            //         return view();
+            //     }
+            // }
+            
+            return view('usuario.inicio');
+        }
+
+        else{
+            return Redirect::to( route('login', ['error' => 'Senha ou email está incorreto!']) );
+        }
+
     }
 }

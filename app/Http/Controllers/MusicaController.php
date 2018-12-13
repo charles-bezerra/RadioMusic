@@ -27,7 +27,7 @@ class MusicaController extends Controller
      */
     public function create()
     {
-        return view('layouts.cadastroMusica');
+        return view('user.cadastroMusica');
     }
 
     /**
@@ -67,7 +67,7 @@ class MusicaController extends Controller
           $musica->save();
 
           Session::put('alert', 'OK');
-          return Redirect::to( route('cadastroMusica') );
+          return Redirect::to( route('musica.create') );
     }    
 
     /**

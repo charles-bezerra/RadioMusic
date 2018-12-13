@@ -27,32 +27,19 @@
                         @csrf
 
                         <b><h3>Entre em sua conta</h3></b>
-<!--                         @if(!empty(Session::get('error')))
-                            @section('error-senha')
-                                <div class="alert alert-danger">
-                                    {{ Session::get('error') }}
-                                </div>
-                            @show
-                        @endif -->
+                        @if (isset($error))
+                            <span class="invalid-feedback" style="color:red">
+                                <strong>{{ $error }}</strong>
+                            </span>
+                        @endif
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="email" class="form-control" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entre com email" name='email'>
                             <small id="emailHelp" class="form-text text-muted">Nós não compartilharemos seu email com ninguém.</small>
-
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Senha</label>
                             <input type="password" class="form-control" required="required" id="exampleInputPassword1" placeholder="Sua senha" name='senha'>
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('senha') }}</strong>
-                                </span>
-                            @endif
                         </div>
 
                         <button type="submit" class="btn btn-primary">Entrar</button>

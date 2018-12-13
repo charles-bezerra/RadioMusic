@@ -23,6 +23,7 @@ class UserController extends Controller
      */
     public function __construct(User $user){
         $this->user = $user;
+        $this->middleware ('auth');
     }
     public function index()
     {
@@ -162,19 +163,19 @@ class UserController extends Controller
     
     
 
-    public function valid(Request $request){
-          $login = DB::table('users')->select('*')->where('email',"=",$request->email)->where('senha',"=",$request->senha)->get();
-          if (count($login)>0) {
-              Session::put('id', $login[0]->id);
-              Session::put('nome', $login[0]->nome);
-              Session::put('login', "OK");
-              Session::put('email', $login[0]->email);
-              Session::forget('error');
-              return Redirect::to( route('home') );
-          }else{
-              Session::put('error', "Email ou senha não encontrado");
-              return Redirect::to( route('login') );
-          }
-    }
+    // public function valid(Request $request){
+    //       $login = DB::table('users')->select('*')->where('email',"=",$request->email)->where('senha',"=",$request->senha)->get();
+    //       if (count($login)>0) {
+    //           Session::put('id', $login[0]->id);
+    //           Session::put('nome', $login[0]->nome);
+    //           Session::put('login', "OK");
+    //           Session::put('email', $login[0]->email);
+    //           Session::forget('error');
+    //           return Redirect::to( route('home') );
+    //       }else{
+    //           Session::put('error', "Email ou senha não encontrado");
+    //           return Redirect::to( route('login') );
+    //       }
+    // }
 
 }
