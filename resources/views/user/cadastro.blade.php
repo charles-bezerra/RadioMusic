@@ -29,15 +29,6 @@
               
               <h2 style="margin-bottom:20px">Faça seu cadastro</h2>
 
-<!--               @if(!empty(Session::get('error')))
-                @section('error-senha')
-                  <div class="alert alert-danger">
-                    {{ Session::get('error') }}
-                  </div>
-                @show
-              @endif -->
-
-
               @if(isset($errors) && count($errors) > 0)
                   <div class="row">
                       <div class="col 12 alert alert-danger">

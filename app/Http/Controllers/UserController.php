@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Input;
 
 use DB;
 use Redirect;
+use Session;
+
 use App\Pedidos;
 use App\User;
 use App\Musicas;
-use Session;
 
 
 class UserController extends Controller
@@ -21,18 +22,24 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(User $user){
+    public function __construct(User $user)
+    {
         $this->user = $user;
-        $this->middleware ('auth');
+        $this->middleware('auth');
     }
+
     public function index()
     {
         $count = Pedidos::count("*");
         $pedido = Pedidos::find($count);
         $musica = Pedidos::find($count)->musicas;
         $usuario = Pedidos::find($count)->usuarios;
-        return view("user.index", [ 'pedido' => $pedido ,'musica' => $musica, 'usuario' => $usuario]);
+        return view("user.index", [ 
+            'pedido' => $pedido ,
+            'musica' => $musica, 
+            'usuario' => $usuario]);
     }
+
     public function login()
     {
         return view('login');
@@ -46,7 +53,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.cadastro');
+        return Redirect::to(router('resister'));
     }
 
 
@@ -55,7 +62,7 @@ class UserController extends Controller
         $users_pedidos = [];
         $musicas_pedidos = [];
         $count_pedidos = Pedidos::count("*");
-
+        
         $musicas = Musicas::all(); 
         $pedidos = Pedidos::all();
 
@@ -65,7 +72,12 @@ class UserController extends Controller
         }
 
         return view("home", 
-          ['users_pedidos' => $users_pedidos, 'musicas_pedidos' => $musicas_pedidos, 'count_pedidos' => $count_pedidos, 'musicas' => $musicas, 'pedidos' => $pedidos]);
+          ['users_pedidos' => $users_pedidos, 
+           'musicas_pedidos' => $musicas_pedidos, 
+           'count_pedidos' => $count_pedidos, 
+           'musicas' => $musicas, 
+           'pedidos' => $pedidos
+          ]);
     }
 
 
@@ -160,22 +172,4 @@ class UserController extends Controller
         $this->exit();
         return Redirect::to(route('/'));
     }
-    
-    
-
-    // public function valid(Request $request){
-    //       $login = DB::table('users')->select('*')->where('email',"=",$request->email)->where('senha',"=",$request->senha)->get();
-    //       if (count($login)>0) {
-    //           Session::put('id', $login[0]->id);
-    //           Session::put('nome', $login[0]->nome);
-    //           Session::put('login', "OK");
-    //           Session::put('email', $login[0]->email);
-    //           Session::forget('error');
-    //           return Redirect::to( route('home') );
-    //       }else{
-    //           Session::put('error', "Email ou senha não encontrado");
-    //           return Redirect::to( route('login') );
-    //       }
-    // }
-
 }

@@ -10,7 +10,7 @@
 	</ul>
 	<form class="form-inline my-2 my-lg-0" style="color: white">
 		@yield('user_name')
-		<a class="nav-link" href="{{ route('logout.index') }}" style="color:#FF6347">Sair</a>
+		<a class="nav-link" href="{{ route('logout') }}" style="color:#FF6347">Sair</a>
 	</form>
 @endsection
 
@@ -27,7 +27,7 @@
 
 @section('header')
  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black">
-	  	  <a class="navbar-brand" href="{{ route('usuario.index') }}">
+	  	  <a class="navbar-brand" href="{{ url('/') }}">
 	    		<img class="img-fluid" width="25px" src='/icons/icon_player.png'/>
 	    		<b>RadioMusic</b>
 	  	  </a>	  

@@ -1,43 +1,23 @@
-<!DOCTYPE html>
+@extends('layouts.app')
 
-<html>
-  {!! $page = 'home' !!}
-  @include('includes.head')
-<!-- 
-  @if(Session::get('login') != 'OK')
-    <script type="text/javascript">
-        {{ Session::put('error', "Você precisa entrar no sistema primeiro!") }}
-        window.location = "{{ route('login') }}";//here double curly bracket
-    </script>
-  @endif -->
-  
-  <div class='recuo'></div>
-  <body>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-      @include('includes.header') 
-      @yield('header')
-      
-      <div class="container">
-          <div style="margin-top: 50px"></div>
-          <div class="row">
-                <div  align='right' class="col-12">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
-                      Solicitar
-                  </button>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
                 </div>
-          </div>
-
-          <hr/>
-          <div class="row" style="padding: 10px">
-              <div class="col-12">
-                   <h2>Programação</h2>
-              </div>
-          </div>
-          @include('includes.table_pedidos_all')  
-
-          @include('includes.model')
-
-      </div>
-
-  </body>
-</html>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

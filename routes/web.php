@@ -1,4 +1,5 @@
 <?php
+use App\Pedidos;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,15 +12,19 @@
 |
 */
 
-Route::get("/", "UserController@index");
+Route::get("/", function (){
+    $count = Pedidos::count("*");
+    $pedido = Pedidos::find($count);
+    $musica = Pedidos::find($count)->musicas;
+    $usuario = Pedidos::find($count)->usuarios;
+    return view('index' ,[ 'pedido' => $pedido ,'musica' => $musica, 'usuario' => $usuario]);
+});
 
 Route::resource("usuario", "UserController");
 Route::resource("pedido", "PedidoController");
 Route::resource("musica", "MusicaController");
-Route::resource("logout", "LogoutController");
+
 Auth::routes();
 
-Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::view('table', 'includes.table_pedidos_user')->name('table1');
-
 Route::get('/home', 'HomeController@index')->name('home');
