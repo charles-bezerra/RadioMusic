@@ -89,7 +89,7 @@ class Profile
     /**
      * Returns the parent token.
      *
-     * @return null|string The parent token
+     * @return string|null The parent token
      */
     public function getParentToken()
     {
@@ -214,6 +214,17 @@ class Profile
     {
         $this->children[] = $child;
         $child->setParent($this);
+    }
+
+    public function getChildByToken(string $token): ?self
+    {
+        foreach ($this->children as $child) {
+            if ($token === $child->getToken()) {
+                return $child;
+            }
+        }
+
+        return null;
     }
 
     /**

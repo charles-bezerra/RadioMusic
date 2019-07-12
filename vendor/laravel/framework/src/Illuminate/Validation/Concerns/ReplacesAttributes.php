@@ -259,7 +259,11 @@ trait ReplacesAttributes
      */
     protected function replaceGt($message, $attribute, $rule, $parameters)
     {
-        return str_replace(':value', $this->getSize($parameters[0], $this->getValue($parameters[0])), $message);
+        if (is_null($value = $this->getValue($parameters[0]))) {
+            return str_replace(':value', $parameters[0], $message);
+        }
+
+        return str_replace(':value', $this->getSize($attribute, $value), $message);
     }
 
     /**
@@ -273,7 +277,11 @@ trait ReplacesAttributes
      */
     protected function replaceLt($message, $attribute, $rule, $parameters)
     {
-        return str_replace(':value', $this->getSize($parameters[0], $this->getValue($parameters[0])), $message);
+        if (is_null($value = $this->getValue($parameters[0]))) {
+            return str_replace(':value', $parameters[0], $message);
+        }
+
+        return str_replace(':value', $this->getSize($attribute, $value), $message);
     }
 
     /**
@@ -287,7 +295,11 @@ trait ReplacesAttributes
      */
     protected function replaceGte($message, $attribute, $rule, $parameters)
     {
-        return str_replace(':value', $this->getSize($parameters[0], $this->getValue($parameters[0])), $message);
+        if (is_null($value = $this->getValue($parameters[0]))) {
+            return str_replace(':value', $parameters[0], $message);
+        }
+
+        return str_replace(':value', $this->getSize($attribute, $value), $message);
     }
 
     /**
@@ -301,7 +313,11 @@ trait ReplacesAttributes
      */
     protected function replaceLte($message, $attribute, $rule, $parameters)
     {
-        return str_replace(':value', $this->getSize($parameters[0], $this->getValue($parameters[0])), $message);
+        if (is_null($value = $this->getValue($parameters[0]))) {
+            return str_replace(':value', $parameters[0], $message);
+        }
+
+        return str_replace(':value', $this->getSize($attribute, $value), $message);
     }
 
     /**
@@ -414,6 +430,20 @@ trait ReplacesAttributes
      * @return string
      */
     protected function replaceAfterOrEqual($message, $attribute, $rule, $parameters)
+    {
+        return $this->replaceBefore($message, $attribute, $rule, $parameters);
+    }
+
+    /**
+     * Replace all place-holders for the date_equals rule.
+     *
+     * @param  string  $message
+     * @param  string  $attribute
+     * @param  string  $rule
+     * @param  array   $parameters
+     * @return string
+     */
+    protected function replaceDateEquals($message, $attribute, $rule, $parameters)
     {
         return $this->replaceBefore($message, $attribute, $rule, $parameters);
     }
